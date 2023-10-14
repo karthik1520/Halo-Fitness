@@ -114,7 +114,6 @@ namespace HaloFitnessAssignment
                             case 7: Program = PROGRAM8; ProgramPrice = PROGRAM8COST; break;
                             case 8: Program = PROGRAM9; ProgramPrice = PROGRAM9COST; break;
                         }
-
                         // Switching between different sessions and discount rates
                         switch (SessionIndex)
                         {
@@ -135,7 +134,6 @@ namespace HaloFitnessAssignment
                             {
                                 // Making visible the No Upgrade Radio Button
                                 NoUpgradeRadioButton.Visible = true;
-
                                 // switching between upgrade options
                                 // This block also checks if there are 4 or more attendees and if an upgrade option has been selected in order to apply a group discount 
                                 switch (UpgradeIndex)
@@ -392,7 +390,6 @@ namespace HaloFitnessAssignment
                     CustomizedBottleUpgrades++;
                 }
                 SummaryButton.Enabled = true;
-
                 // Calculating the total count for the day in order to display in the summary
                 TotalFeesCollected += ProgramFees;
                 TotalNoOfAttendees += NoOfAttendees;
@@ -408,12 +405,13 @@ namespace HaloFitnessAssignment
         // Actions performed on click of Summary Button
         private void SummaryButton_Click(object sender, EventArgs e)
         {
+            decimal AverageRevenue = TotalFeesCollected / TotalRegistrationsForDay;
             OutputLabel.Text = "\n" + "Total Registration For Day: " + TotalRegistrationsForDay +
                 "\n" + "\n" + "Total Fees Collected: " + TotalFeesCollected.ToString("C") +
                 "\n" + "\n" + "Total Attendants: " + TotalNoOfAttendees +
                 "\n" + "\n" + "Total Count of Upgrades: " + TotalUpgrades +
+                "\n" + "\n" + "Average Revenue Per Booking: " + AverageRevenue.ToString("C2") +
                 "\n" + "\n" + "Total Count of Customized Bottle Upgrade Request: " + TotalBottleUpgrades;
-
         }
         // Actions performed on click of Clear
         private void ClearButton_Click(object sender, EventArgs e)
