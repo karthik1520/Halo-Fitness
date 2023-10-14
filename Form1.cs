@@ -373,12 +373,17 @@ namespace HaloFitnessAssignment
         private void BookButton_Click(object sender, EventArgs e)
         {
             string message;
+            /* the below if condition is present in order to display even the group fees
+             * if the user has selected for an upgrade and the number of attendees is greater than 4
+             * then group discount is applicable. So for this purpose the below if condition is put into use
+            */
             if(UpgradeRadioButton.Checked)
             {
                 message = "Do you wish to go ahead with the below Program" + "\n" + "\n" +
                              "Program Type: " + Program + "\n" + "\n" + "Program Duration: " + SessionNumbers +
                              "\n" + "\n" + "Program Cost: " + GroupFees.ToString("C2");
             }
+            // if no group discount, then only the program fees is dispalyed
             else
             {
                 message = "Do you wish to go ahead with the below Program" + "\n" + "\n" +
@@ -390,6 +395,7 @@ namespace HaloFitnessAssignment
             DialogResult result = MessageBox.Show(message, "Booking Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                // the below if cases are to keep track of the number of upgrades for the purpose of summary
                 if (UpgradeRadioButton.Checked)
                 {
                     UpgradeIndex = UpgradesListBox.SelectedIndex;
@@ -398,6 +404,7 @@ namespace HaloFitnessAssignment
                         TotalUpgrades++;
                     }
                 }
+                // the below if case is to keep track of the number of upgrades for the purpose of summary
                 if (CustomizedBottleUpgradeCheckBox.Checked)
                 {
                     CustomizedBottleUpgrades++;
