@@ -302,8 +302,6 @@ namespace HaloFitnessAssignment
                                 ClearButton.Enabled = false;
                             }
                         }
-
-                        
                         // If no upgrades has been selected then this block is executed. This performs the caluclation of the program cost
                         else
                         {
