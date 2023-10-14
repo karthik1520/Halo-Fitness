@@ -157,22 +157,49 @@ namespace HaloFitnessAssignment
                                         UpgradeProgram = UPGRADEPROGRAM1; UpgradeFees = ONETOONETRAININGCOST;
                                         if (NoOfAttendees >= 4)
                                         {
-                                            ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
-                                            GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
-                                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
-                                            "\n" + "\n" + "One to One Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
-                                            "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
-                                            "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
-                                            "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST))) * SessionNumbers) * NoOfAttendees;
+                                                GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                                "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
+                                                "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
+                                                "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            }
+                                            else
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
+                                                "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
+                                                "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            }
                                         }
                                         else
                                         {
-                                            ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
-                                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
-                                            "\n" + "\n" + "One to One Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
-                                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST))) * SessionNumbers) * NoOfAttendees;
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            }
+                                            else
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            }
                                         }
                                         break;
                                     // Actions performed if Upgrade option 2 is selected
@@ -180,22 +207,49 @@ namespace HaloFitnessAssignment
                                         UpgradeProgram = UPGRADEPROGRAM2; UpgradeFees = SMALLGROUPTRAININGCOST;
                                         if (NoOfAttendees >= 4)
                                         {
-                                            ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
-                                            GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
-                                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
-                                            "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
-                                            "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
-                                            "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
-                                            "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST))) * SessionNumbers) * NoOfAttendees;
+                                                GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                                "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
+                                                "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
+                                                "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            }
+                                            else
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
+                                                "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
+                                                "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            }
                                         }
                                         else
                                         {
-                                            ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
-                                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
-                                            "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
-                                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            }
+                                            else
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            }
                                         }
                                         break;
                                     // Actions performed if Upgrade option 3 is selected
@@ -203,22 +257,49 @@ namespace HaloFitnessAssignment
                                         UpgradeProgram = UPGRADEPROGRAM3; UpgradeFees = MEDIUMGROUPTRAININGCOST;
                                         if (NoOfAttendees >= 4)
                                         {
-                                            ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
-                                            GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
-                                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
-                                            "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
-                                            "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
-                                            "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
-                                            "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                                "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
+                                                "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
+                                                "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            }
+                                            else
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
+                                                "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
+                                                "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
+                                            }
                                         }
                                         else
                                         {
-                                            ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
-                                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
-                                            "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
-                                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            }
+                                            else
+                                            {
+                                                ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
+                                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
+                                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            }
                                         }
                                         break;
                                 }
@@ -237,21 +318,23 @@ namespace HaloFitnessAssignment
                         // If no upgrades has been selected then this block is executed. This performs the caluclation of the program cost
                         else
                         {
-                            ProgramFees = (((ProgramPrice) - (SessionDiscount * (ProgramPrice))) * SessionNumbers) * NoOfAttendees;
-                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                            SessionNumbers.ToString() + "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
-                            BookButton.Enabled = true;
-                            ClearButton.Enabled = true;
-                        }
-
-                        // Checking if Customized Bottle upgrade has been selected and calculating the price for the bottle
-                        // This is then applied along with the program fees
-                        if (CustomizedBottleUpgradeCheckBox.Checked)
-                        {
-                            ProgramFees = (ProgramFees + PERSONALIZEDBOTTLECOST) * NoOfAttendees;
-                            OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " + SessionNumbers.ToString() +
-                            "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
-                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                            // Checking if Customized Bottle upgrade has been selected and calculating the price for the bottle
+                            // This is then applied along with the program fees
+                            if (CustomizedBottleUpgradeCheckBox.Checked)
+                            {
+                                ProgramFees = (ProgramFees + PERSONALIZEDBOTTLECOST) * NoOfAttendees;
+                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " + SessionNumbers.ToString() +
+                                "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
+                                "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                            }
+                            else
+                            {
+                                ProgramFees = (((ProgramPrice) - (SessionDiscount * (ProgramPrice))) * SessionNumbers) * NoOfAttendees;
+                                OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
+                                SessionNumbers.ToString() + "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                BookButton.Enabled = true;
+                                ClearButton.Enabled = true;
+                            }
                         }
                     }
 

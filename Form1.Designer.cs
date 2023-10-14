@@ -358,7 +358,7 @@
             // OutputLabel
             // 
             OutputLabel.AutoSize = true;
-            OutputLabel.Location = new Point(270, 42);
+            OutputLabel.Location = new Point(241, 11);
             OutputLabel.Name = "OutputLabel";
             OutputLabel.Size = new Size(195, 20);
             OutputLabel.TabIndex = 0;
