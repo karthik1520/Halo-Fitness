@@ -315,6 +315,7 @@ namespace HaloFitnessAssignment
                             }
                         }
 
+                        
                         // If no upgrades has been selected then this block is executed. This performs the caluclation of the program cost
                         else
                         {
@@ -322,7 +323,7 @@ namespace HaloFitnessAssignment
                             // This is then applied along with the program fees
                             if (CustomizedBottleUpgradeCheckBox.Checked)
                             {
-                                ProgramFees = (ProgramFees + PERSONALIZEDBOTTLECOST) * NoOfAttendees;
+                                ProgramFees = (((ProgramPrice + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice))) * SessionNumbers) * NoOfAttendees;
                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " + SessionNumbers.ToString() +
                                 "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
                                 "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
