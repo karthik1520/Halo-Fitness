@@ -20,7 +20,6 @@ namespace HaloFitnessAssignment
         {
             InitializeComponent();
         }
-
         // Initializing Events/ Actions on load of form
         private void HaloFitnessForm_Load(object sender, EventArgs e)
         {
@@ -38,21 +37,16 @@ namespace HaloFitnessAssignment
             ClearButtonToolTip.SetToolTip(ClearButton, "Click to clear the data and reset form");
             ExitButtonToolTip.SetToolTip(ExitButton, "Click to exit the Application");
         }
-
-
         // Decleration of Global Variables and Constant Variables
         int TotalRegistrationsForDay, TotalNoOfAttendees, SessionNumbers, NoOfAttendees,
             TotalCountOfUpgrades = 0, TotalUpgrades = 0, UpgradeIndex = 0,
             TotalBottleUpgrades = 0, CustomizedBottleUpgrades = 0;
         string Program = "";
         decimal TotalFeesCollected, ProgramFees, GroupFees;
-
-
         const string PROGRAM1 = "Circuit Training", PROGRAM2 = "Pilates", PROGRAM3 = "High-Intensity Interval Training", PROGRAM4 = "Aerobics",
         PROGRAM5 = "Fitness Boot Camp", PROGRAM6 = "Weight Training", PROGRAM7 = "Agility", PROGRAM8 = "Yoga", PROGRAM9 = "Speed Training";
-
+        
         const string UPGRADEPROGRAM1 = "One to One Training", UPGRADEPROGRAM2 = "Small Group Training", UPGRADEPROGRAM3 = " Medium Group Training";
-
         const decimal PROGRAM1COST = 25m, PROGRAM2COST = 40m, PROGRAM3COST = 25m, PROGRAM4COST = 25m, PROGRAM5COST = 20m, PROGRAM6COST = 25m,
         PROGRAM7COST = 50m, PROGRAM8COST = 35m, PROGRAM9COST = 45m;
 
@@ -63,16 +57,13 @@ namespace HaloFitnessAssignment
         BUNDLE6DISCOUNT = .30m;
 
         const decimal ONETOONETRAININGCOST = 25m, SMALLGROUPTRAININGCOST = 15m, MEDIUMGROUPTRAININGCOST = 20m;
-
         const decimal GROUPDISCOUNT = .075m, PERSONALIZEDBOTTLECOST = 7.99m;
-
         // Event to enable Upgrade event only on mouse down event. 
         // This is done to enable the upgrade option to select one of the 3 upgrade training programs
         private void UpgradeRadioButton_MouseDown(object sender, MouseEventArgs e)
         {
             UpgradesListBox.Enabled = true;
         }
-
         // Selecting the values in attendance text box on mouse down event.
         // Done to Automatically select the entire value instead of hitting backspace
         private void AttendeesTextBox_MouseDown(object sender, MouseEventArgs e)
@@ -80,15 +71,12 @@ namespace HaloFitnessAssignment
             AttendeesTextBox.Focus();
             AttendeesTextBox.SelectAll();
         }
-
         // Action Performed when NoUpgrade Radio button is selected
         private void NoUpgradeRadioButton_MouseDown(object sender, MouseEventArgs e)
         {
             UpgradesListBox.ClearSelected();
             UpgradesListBox.Enabled = false;
         }
-
-
         // Actions performed on click of display button
         private void DisplayButton_Click(object sender, EventArgs e)
         {
@@ -338,7 +326,6 @@ namespace HaloFitnessAssignment
                             }
                         }
                     }
-
                     // Message box prompt to help the user to identify where the error occoured and helping them solve it
                     else
                     {
@@ -349,7 +336,6 @@ namespace HaloFitnessAssignment
                         ClearButton.Enabled = false;
                     }
                 }
-
                 // Message box prompt to help the user to identify where the error occoured and helping them solve it
                 else
                 {
@@ -368,7 +354,6 @@ namespace HaloFitnessAssignment
                 ClearButton.Enabled = false;
             }
         }
-
         // Actions to perform on click of Book Button
         // This will display all the informations of the program, session count, pricing, and if the upgrades has been opted
         private void BookButton_Click(object sender, EventArgs e)
@@ -391,8 +376,6 @@ namespace HaloFitnessAssignment
                              "Program Type: " + Program + "\n" + "\n" + "Program Duration: " + SessionNumbers +
                              "\n" + "\n" + "Program Cost: " + ProgramFees;
             }
-            
-
             DialogResult result = MessageBox.Show(message, "Booking Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -423,10 +406,7 @@ namespace HaloFitnessAssignment
             {
 
             }
-
-
         }
-
         // Actions performed on click of Summary Button
         private void SummaryButton_Click(object sender, EventArgs e)
         {
@@ -437,7 +417,6 @@ namespace HaloFitnessAssignment
                 "\n" + "\n" + "Total Count of Customized Bottle Upgrade Request: " + TotalBottleUpgrades;
 
         }
-
         // Actions performed on click of Clear
         private void ClearButton_Click(object sender, EventArgs e)
         {
@@ -452,13 +431,11 @@ namespace HaloFitnessAssignment
             AttendeesTextBox.Text = "0";
             BookButton.Enabled = false;
         }
-
         // Actions performed on click of Exit button
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         /* This method dynamically changes the contents in the outuput listbox after the display button is clicked
          * This method is done to make sure the customer is aware of the changes that is happening before before
          * This bring clarity to the use
@@ -474,10 +451,8 @@ namespace HaloFitnessAssignment
                         DisplayButton_Click(sender, e);
                     }
                 }
-
             }
         }
-
         /* This method dynamically changes the contents in the outuput listbox after the display button is clicked
          * This method is done to make sure the customer is aware of the changes that is happening before before
          * This bring clarity to the use
@@ -490,7 +465,6 @@ namespace HaloFitnessAssignment
                 {
                     DisplayButton_Click(sender, e);
                 }
-
             }
         }
     }
