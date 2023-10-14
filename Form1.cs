@@ -372,8 +372,20 @@ namespace HaloFitnessAssignment
         // This will display all the informations of the program, session count, pricing, and if the upgrades has been opted
         private void BookButton_Click(object sender, EventArgs e)
         {
-            string message = "Do you wish to go ahead with the below Program" + "\n" + "\n" +
-                             "Program Type: " + Program + "\n" + "\n" + "Program Duration: " + SessionNumbers;
+            string message;
+            if(UpgradeRadioButton.Checked)
+            {
+                message = "Do you wish to go ahead with the below Program" + "\n" + "\n" +
+                             "Program Type: " + Program + "\n" + "\n" + "Program Duration: " + SessionNumbers +
+                             "\n" + "\n" + "Program Cost: " + GroupFees.ToString("C2");
+            }
+            else
+            {
+                message = "Do you wish to go ahead with the below Program" + "\n" + "\n" +
+                             "Program Type: " + Program + "\n" + "\n" + "Program Duration: " + SessionNumbers +
+                             "\n" + "\n" + "Program Cost: " + ProgramFees;
+            }
+            
 
             DialogResult result = MessageBox.Show(message, "Booking Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -411,7 +423,7 @@ namespace HaloFitnessAssignment
         private void SummaryButton_Click(object sender, EventArgs e)
         {
             OutputLabel.Text = "\n" + "Total Registration For Day: " + TotalRegistrationsForDay +
-                "\n" + "\n" + "Total Fees Collected: " + TotalFeesCollected +
+                "\n" + "\n" + "Total Fees Collected: " + TotalFeesCollected.ToString("C") +
                 "\n" + "\n" + "Total Attendants: " + TotalNoOfAttendees +
                 "\n" + "\n" + "Total Count of Upgrades: " + TotalUpgrades +
                 "\n" + "\n" + "Total Count of Customized Bottle Upgrade Request: " + TotalBottleUpgrades;

@@ -288,13 +288,13 @@
             panel3.Controls.Add(DisplayButton);
             panel3.Location = new Point(968, 351);
             panel3.Name = "panel3";
-            panel3.Size = new Size(192, 358);
+            panel3.Size = new Size(192, 416);
             panel3.TabIndex = 2;
             // 
             // ExitButton
             // 
             ExitButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ExitButton.Location = new Point(48, 313);
+            ExitButton.Location = new Point(48, 364);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(94, 29);
             ExitButton.TabIndex = 5;
@@ -305,7 +305,7 @@
             // ClearButton
             // 
             ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ClearButton.Location = new Point(48, 240);
+            ClearButton.Location = new Point(48, 277);
             ClearButton.Name = "ClearButton";
             ClearButton.Size = new Size(94, 29);
             ClearButton.TabIndex = 4;
@@ -316,7 +316,7 @@
             // SummaryButton
             // 
             SummaryButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            SummaryButton.Location = new Point(48, 169);
+            SummaryButton.Location = new Point(48, 199);
             SummaryButton.Name = "SummaryButton";
             SummaryButton.Size = new Size(94, 29);
             SummaryButton.TabIndex = 3;
@@ -327,7 +327,7 @@
             // BookButton
             // 
             BookButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BookButton.Location = new Point(48, 94);
+            BookButton.Location = new Point(48, 114);
             BookButton.Name = "BookButton";
             BookButton.Size = new Size(94, 29);
             BookButton.TabIndex = 2;
@@ -352,7 +352,7 @@
             OutputPanel.Controls.Add(OutputLabel);
             OutputPanel.Location = new Point(113, 351);
             OutputPanel.Name = "OutputPanel";
-            OutputPanel.Size = new Size(770, 358);
+            OutputPanel.Size = new Size(770, 416);
             OutputPanel.TabIndex = 3;
             // 
             // OutputLabel
@@ -398,7 +398,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1292, 721);
+            ClientSize = new Size(1292, 779);
             Controls.Add(OutputPanel);
             Controls.Add(panel3);
             Controls.Add(ProgramDetailsPanel);
