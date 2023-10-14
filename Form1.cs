@@ -30,6 +30,13 @@ namespace HaloFitnessAssignment
             UpgradesListBox.Enabled = false;
             AttendeesTextBox.Text = "0";
             NoUpgradeRadioButton.Visible = false;
+
+            // Setting Tool tip text
+            DisplayButtonToolTip.SetToolTip(DisplayButton, "Click to display the selected programs and upgrades");
+            BookButtonToolTip.SetToolTip(BookButton, "Click to book the selected programs and upgrades");
+            SummaryButtonToolTip.SetToolTip(SummaryButton, "Click to display the summary data");
+            ClearButtonToolTip.SetToolTip(ClearButton, "Click to clear the data and reset form");
+            ExitButtonToolTip.SetToolTip(ExitButton, "Click to exit the Application");
         }
 
 
@@ -55,7 +62,7 @@ namespace HaloFitnessAssignment
         const decimal BUNDLE1DISCOUNT = 0m, BUNDLE2DISCOUNT = .05m, BUNDLE3DISCOUNT = .10m, BUNDLE4DISCOUNT = .15m, BUNDLE5DISCOUNT = .20m,
         BUNDLE6DISCOUNT = .30m;
 
-        const decimal ONETOONETRAININGCOST = 25m, SMALLGROUPTRAININGCOST = 15m, MEDIUMGROUPTRAININGCOST = 15m;
+        const decimal ONETOONETRAININGCOST = 25m, SMALLGROUPTRAININGCOST = 15m, MEDIUMGROUPTRAININGCOST = 20m;
 
         const decimal GROUPDISCOUNT = .075m, PERSONALIZEDBOTTLECOST = 7.99m;
 
@@ -73,11 +80,14 @@ namespace HaloFitnessAssignment
             AttendeesTextBox.Focus();
             AttendeesTextBox.SelectAll();
         }
+
+        // Action Performed when NoUpgrade Radio button is selected
         private void NoUpgradeRadioButton_MouseDown(object sender, MouseEventArgs e)
         {
             UpgradesListBox.ClearSelected();
             UpgradesListBox.Enabled = false;
         }
+
 
         // Actions performed on click of display button
         private void DisplayButton_Click(object sender, EventArgs e)
@@ -95,7 +105,7 @@ namespace HaloFitnessAssignment
                 {
                     // parsing value of attendees text box from string to int and storing in a variable
                     NoOfAttendees = int.Parse(AttendeesTextBox.Text);
-                    if (NoOfAttendees > 0)
+                    if (int.TryParse(AttendeesTextBox.Text, out NoOfAttendees) && NoOfAttendees > 0)
                     {
                         // Assigning the index values to a variable inorder to be used in switch statement
                         ProgramIndex = FitnessProgramListBox.SelectedIndex;
@@ -151,6 +161,7 @@ namespace HaloFitnessAssignment
                                             GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                             OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
                                             SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                            "\n" + "\n" + "One to One Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
                                             "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
                                             "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
                                             "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
@@ -159,7 +170,9 @@ namespace HaloFitnessAssignment
                                         {
                                             ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                             OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram + "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                            "\n" + "\n" + "One to One Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
+                                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
                                         }
                                         break;
                                     // Actions performed if Upgrade option 2 is selected
@@ -171,6 +184,7 @@ namespace HaloFitnessAssignment
                                             GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                             OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
                                             SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                            "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
                                             "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
                                             "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
                                             "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
@@ -179,7 +193,9 @@ namespace HaloFitnessAssignment
                                         {
                                             ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                             OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram + "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                            "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
+                                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
                                         }
                                         break;
                                     // Actions performed if Upgrade option 3 is selected
@@ -191,6 +207,7 @@ namespace HaloFitnessAssignment
                                             GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                             OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
                                             SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                            "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
                                             "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
                                             "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
                                             "\n" + "\n" + "Total Program Fees After Group Discount " + GroupFees.ToString("C");
@@ -199,7 +216,9 @@ namespace HaloFitnessAssignment
                                         {
                                             ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                             OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram + "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
+                                            SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                            "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
+                                            "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
                                         }
                                         break;
                                 }
@@ -240,6 +259,7 @@ namespace HaloFitnessAssignment
                     else
                     {
                         MessageBox.Show("Please enter a value for number of attendees", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        AttendeesTextBox.Focus();
                         BookButton.Enabled = false;
                         SummaryButton.Enabled = false;
                         ClearButton.Enabled = false;
@@ -334,6 +354,41 @@ namespace HaloFitnessAssignment
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /* This method dynamically changes the contents in the outuput listbox after the display button is clicked
+         * This method is done to make sure the customer is aware of the changes that is happening before before
+         * This bring clarity to the use
+        */
+        private void FitnessProgramListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FitnessProgramListBox.SelectedIndex != -1)
+            {
+                if (PricingPerSessionListBox.SelectedIndex != -1)
+                {
+                    if (int.TryParse(AttendeesTextBox.Text, out NoOfAttendees) && NoOfAttendees > 0)
+                    {
+                        DisplayButton_Click(sender, e);
+                    }
+                }
+
+            }
+        }
+
+        /* This method dynamically changes the contents in the outuput listbox after the display button is clicked
+         * This method is done to make sure the customer is aware of the changes that is happening before before
+         * This bring clarity to the use
+        */
+        private void PricingPerSessionListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PricingPerSessionListBox.SelectedIndex != -1)
+            {
+                if (int.TryParse(AttendeesTextBox.Text, out NoOfAttendees) && NoOfAttendees > 0)
+                {
+                    DisplayButton_Click(sender, e);
+                }
+
+            }
         }
     }
 }
