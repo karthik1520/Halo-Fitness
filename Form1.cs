@@ -404,10 +404,6 @@ namespace HaloFitnessAssignment
                 CustomizedBottleFeesTotal += (PERSONALIZEDBOTTLECOST * NoOfAttendees);
                 TotalRegistrationsForDay++;
             }
-            else
-            {
-
-            }
         }
         // Actions performed on click of Summary Button
         private void SummaryButton_Click(object sender, EventArgs e)
