@@ -43,7 +43,7 @@ namespace HaloFitnessAssignment
             TotalBottleUpgrades = 0, CustomizedBottleUpgrades = 0,
             BookingGroupDiscountCount = 0;
         string Program = "";
-        decimal TotalFeesCollected, ProgramFees, GroupFees, UpgradeFeesTotal,CustomizedBottleFeesTotal, TotalRevenueFromUpgrades;
+        decimal TotalFeesCollected, ProgramFees, GroupFees, UpgradeFeesTotal,CustomizedBottleFeesTotal, TotalRevenueFromUpgrades, UpgradeFees = 0m;
         const string PROGRAM1 = "Circuit Training", PROGRAM2 = "Pilates", PROGRAM3 = "High-Intensity Interval Training", PROGRAM4 = "Aerobics",
         PROGRAM5 = "Fitness Boot Camp", PROGRAM6 = "Weight Training", PROGRAM7 = "Agility", PROGRAM8 = "Yoga", PROGRAM9 = "Speed Training";
         
@@ -83,7 +83,7 @@ namespace HaloFitnessAssignment
         {
             //  Declaring Variables and setting initial values
             int ProgramIndex = 0, SessionIndex = 0;
-            decimal ProgramPrice = 0m, SessionDiscount = 0m, UpgradeFees = 0m;
+            decimal ProgramPrice = 0m, SessionDiscount = 0m;
             string UpgradeProgram = "";
 
             // Checking if the Listbox value has been selected or not.
@@ -100,7 +100,6 @@ namespace HaloFitnessAssignment
                         ProgramIndex = FitnessProgramListBox.SelectedIndex;
                         SessionIndex = PricingPerSessionListBox.SelectedIndex;
                         SummaryButton.Enabled = true;
-
                         // Switching between different cases/ values in listboxes
                         // Assigning Cost and program values to varaibles decalred in order to switch
                         switch (ProgramIndex)
@@ -125,7 +124,6 @@ namespace HaloFitnessAssignment
                             case 4: SessionNumbers = NUMBEROFSESSIONSBUNDLE5; SessionDiscount = BUNDLE5DISCOUNT; break;
                             case 5: SessionNumbers = NUMBEROFSESSIONSBUNDLE6; SessionDiscount = BUNDLE6DISCOUNT; break;
                         }
-
                         // Condition to check if the radio button has been checked
                         // On enabling radio button, it is possible to select one of the upgrades
                         if (UpgradeRadioButton.Checked)
@@ -149,7 +147,7 @@ namespace HaloFitnessAssignment
                                                 ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST))) * SessionNumbers) * NoOfAttendees;
                                                 GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
                                                 "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
@@ -161,7 +159,7 @@ namespace HaloFitnessAssignment
                                                 ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
                                                 "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
@@ -174,7 +172,7 @@ namespace HaloFitnessAssignment
                                             {
                                                 ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST))) * SessionNumbers) * NoOfAttendees;
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
                                                 "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
@@ -183,7 +181,7 @@ namespace HaloFitnessAssignment
                                             {
                                                 ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "One to One Training Program Cost: " + ONETOONETRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
                                             }
@@ -199,7 +197,7 @@ namespace HaloFitnessAssignment
                                                 ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST))) * SessionNumbers) * NoOfAttendees;
                                                 GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
                                                 "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
@@ -211,7 +209,7 @@ namespace HaloFitnessAssignment
                                                 ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
                                                 "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
@@ -224,7 +222,7 @@ namespace HaloFitnessAssignment
                                             {
                                                 ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
                                                 "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
@@ -233,7 +231,7 @@ namespace HaloFitnessAssignment
                                             {
                                                 ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "Small Group Program Cost: " + SMALLGROUPTRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Total Program Cost: " + ProgramFees.ToString("C");
                                             }
@@ -249,7 +247,7 @@ namespace HaloFitnessAssignment
                                                 ProgramFees = (((ProgramPrice + UpgradeFees + PERSONALIZEDBOTTLECOST) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Personalized Bottle Cost: " + PERSONALIZEDBOTTLECOST.ToString("C") +
                                                 "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
@@ -261,7 +259,7 @@ namespace HaloFitnessAssignment
                                                 ProgramFees = (((ProgramPrice + UpgradeFees) - (SessionDiscount * (ProgramPrice + UpgradeFees))) * SessionNumbers) * NoOfAttendees;
                                                 GroupFees = ProgramFees - (ProgramFees * GROUPDISCOUNT);
                                                 OutputLabel.Text = "\n" + "Program: " + Program + "\n" + "\n" + "Number of Sessions: " +
-                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Training Method: " + UpgradeProgram +
+                                                SessionNumbers.ToString() + "\n" + "\n" + "Selected Upgrade: " + UpgradeProgram +
                                                 "\n" + "\n" + "Medium Group Program Cost: " + MEDIUMGROUPTRAININGCOST.ToString("C") +
                                                 "\n" + "\n" + "Group Discount Applied: Yes" + "\n" + "\n" + "Group Discount Rate: " + GROUPDISCOUNT +
                                                 "\n" + "\n" + "Total Program Fees Before Group Discount " + ProgramFees.ToString("C") +
@@ -292,8 +290,6 @@ namespace HaloFitnessAssignment
                                 }
                                 BookButton.Enabled = true;
                                 ClearButton.Enabled = true;
-                                UpgradeFeesTotal += (UpgradeFees * NoOfAttendees);
-                                CustomizedBottleFeesTotal += (PERSONALIZEDBOTTLECOST * NoOfAttendees);
                             }
                             else
                             {
@@ -404,6 +400,8 @@ namespace HaloFitnessAssignment
                 TotalCountOfUpgrades += TotalUpgrades;
                 TotalBottleUpgrades += CustomizedBottleUpgrades;
                 TotalRevenueFromUpgrades = CustomizedBottleFeesTotal + UpgradeFeesTotal;
+                UpgradeFeesTotal += (UpgradeFees * NoOfAttendees);
+                CustomizedBottleFeesTotal += (PERSONALIZEDBOTTLECOST * NoOfAttendees);
                 TotalRegistrationsForDay++;
             }
             else
