@@ -39,8 +39,8 @@ namespace HaloFitnessAssignment
         }
         // Decleration of Global Variables and Constant Variables
         int TotalRegistrationsForDay, TotalNoOfAttendees, SessionNumbers, NoOfAttendees,
-            TotalCountOfUpgrades = 0, TotalUpgrades = 0, UpgradeIndex = 0,
-            TotalBottleUpgrades = 0, CustomizedBottleUpgrades = 0,
+            TotalUpgrades = 0, UpgradeIndex = 0,
+            CustomizedBottleUpgrades = 0,
             BookingGroupDiscountCount = 0;
         string Program = "";
         decimal TotalFeesCollected, ProgramFees, GroupFees, UpgradeFeesTotal,CustomizedBottleFeesTotal, TotalRevenueFromUpgrades, UpgradeFees = 0m;
@@ -381,13 +381,13 @@ namespace HaloFitnessAssignment
                     UpgradeIndex = UpgradesListBox.SelectedIndex;
                     if (UpgradeIndex != -1)
                     {
-                        TotalUpgrades++;
+                        TotalUpgrades += 1;
                     }
                 }
                 // the below if case is to keep track of the number of upgrades for the purpose of summary
                 if (CustomizedBottleUpgradeCheckBox.Checked)
                 {
-                    CustomizedBottleUpgrades++;
+                    CustomizedBottleUpgrades += 1;
                 }
                 if ((NoOfAttendees >= 4) && (UpgradeRadioButton.Checked))
                 {
@@ -397,11 +397,9 @@ namespace HaloFitnessAssignment
                 // Calculating the total count for the day in order to display in the summary
                 TotalFeesCollected += ProgramFees;
                 TotalNoOfAttendees += NoOfAttendees;
-                TotalCountOfUpgrades += TotalUpgrades;
-                TotalBottleUpgrades += CustomizedBottleUpgrades;
-                TotalRevenueFromUpgrades = CustomizedBottleFeesTotal + UpgradeFeesTotal;
                 UpgradeFeesTotal += (UpgradeFees * NoOfAttendees);
                 CustomizedBottleFeesTotal += (PERSONALIZEDBOTTLECOST * NoOfAttendees);
+                TotalRevenueFromUpgrades = CustomizedBottleFeesTotal + UpgradeFeesTotal;
                 TotalRegistrationsForDay++;
             }
         }
@@ -416,7 +414,7 @@ namespace HaloFitnessAssignment
                 "\n" + "\n" + "Total Number of Bookings with Group Discount: " + BookingGroupDiscountCount +
                 "\n" + "\n" + "Total Revenue From Upgrades: " + TotalRevenueFromUpgrades +
                 "\n" + "\n" + "Average Revenue Per Booking: " + AverageRevenue.ToString("C2") +
-                "\n" + "\n" + "Total Count of Customized Bottle Upgrade Request: " + TotalBottleUpgrades;
+                "\n" + "\n" + "Total Count of Customized Bottle Upgrade Request: " + CustomizedBottleUpgrades;
         }
         // Actions performed on click of Clear
         private void ClearButton_Click(object sender, EventArgs e)
