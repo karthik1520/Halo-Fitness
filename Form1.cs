@@ -1,10 +1,3 @@
-/* Student Name: Karthik Mahadevan Ramesh Kumar
- * Student ID: 23101941
- * Date:15/10/2023
- * Assignment: 2
- * Assignment: Create an application for Halo Fitness
- */
-
 /* Halo Fitness
  * This application is designed to calculate the Fares for Halo Fitness Program
  * The applpication enables users to select the programs and sessions along with discounts.
