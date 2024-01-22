@@ -1,3 +1,3 @@
-# HaloFitnessAssignment
+# Halo Fitness
 The Halo Fitness application, created with simplicity in mind using C#, is a user-friendly tool tailored for the sales team. This straightforward application enables quick and easy pricing generation and booking processing for the diverse health and fitness programs offered by the company. With an intuitive interface, users can effortlessly select programs, obtain dynamic pricing, and efficiently manage bookings. The application's simplicity ensures a hassle-free experience for the sales team, contributing to the seamless execution of Halo Fitness's health and fitness programs.
  
